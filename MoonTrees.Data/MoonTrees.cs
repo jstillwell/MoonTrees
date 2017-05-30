@@ -51,5 +51,12 @@ namespace MoonTrees.Data {
             // Execute the insert operation.
             await table.ExecuteAsync(insertOperation);
         }
+        public void BulkInsert(IEnumerable<Tree> trees) {
+            TableBatchOperation batchOperation = new TableBatchOperation();
+            foreach (var tree in trees) {
+                batchOperation.Insert(tree);
+            }
+            table.ExecuteBatch(batchOperation);
+        }
     }
 }

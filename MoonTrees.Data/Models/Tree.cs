@@ -21,7 +21,7 @@ namespace MoonTrees.Data.Models {
         public bool IsLiving { get; set; }
         public string TreeType {
             get {
-                return this.PartitionKey;
+                return this.RowKey;
             }
         }
     }
