@@ -21,20 +21,27 @@ namespace MoonTrees.Data {
             table = tableClient.GetTableReference("Trees");
             table.CreateIfNotExists();
         }
-        public async Task<IEnumerable<Tree>> Get() {
+        public IEnumerable<Tree> Search(string filter, string searchValue) {
             var trees = new List<Tree>();
 
-            TableQuery<Tree> query = new TableQuery<Tree>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, Tree.Pkey));
-            foreach (var tree in table.ExecuteQuery(query)) {
-                trees.Add(tree);
-            }
+            TableQuery<Tree> rangeQuery = new TableQuery<Tree>().Where(TableQuery.CombineFilters(
+                TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, MoonTreeStorageString),
+                TableOperators.And,
+                TableQuery.GenerateFilterCondition(filter, QueryComparisons.Equal, searchValue)));
 
-            return trees;
+            return table.ExecuteQuery(rangeQuery);
+
+        }
+        public async Task<IEnumerable<Tree>> Get() {
+            TableQuery<Tree> query = new TableQuery<Tree>().Where(
+                TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, Tree.Pkey));
+
+            return table.ExecuteQuery(query);
         }
         public async Task<Tree> Get(string key) {
             var tree = new Tree();
             TableOperation retrieveOperation = TableOperation.Retrieve<Tree>(Tree.Pkey, key);
-            
+
             TableResult retrievedResult = await table.ExecuteAsync(retrieveOperation);
 
             if (retrievedResult.Result == null) {

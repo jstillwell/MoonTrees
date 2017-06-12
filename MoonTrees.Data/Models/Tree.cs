@@ -18,7 +18,13 @@ namespace MoonTrees.Data.Models {
         public string CityAndState { get; set; }
         public string PlantingDate { get; set; }
         public string Location { get; set; }
-        public bool IsLiving { get; set; }
+        public bool IsLiving {
+            get {
+                if (Location.Contains('*')) {
+                    return false;
+                } else { return true; }
+            }
+        }
         public string TreeType {
             get {
                 return this.RowKey;

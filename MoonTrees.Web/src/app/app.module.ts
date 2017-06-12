@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core'
+﻿import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router';
 import { rootRouterConfig } from './app.routes';
 import { AppComponent } from './app.component';
@@ -14,28 +14,30 @@ import { RepoListComponent } from './github/repo-list/repo-list.component';
 import { RepoDetailComponent } from './github/repo-detail/repo-detail.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { ContactComponent } from './contact/contact.component';
+import { LocatorComponent } from './locator/locator.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AboutComponent,
-    RepoBrowserComponent,
-    RepoListComponent,
-    RepoDetailComponent,
-    HomeComponent,
-    ContactComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpModule,
-    RouterModule.forRoot(rootRouterConfig, { useHash: true })
-  ],
-  providers: [
-    GithubService
-  ],
-  bootstrap: [ AppComponent ]
+    declarations: [
+        AppComponent,
+        AboutComponent,
+        RepoBrowserComponent,
+        RepoListComponent,
+        RepoDetailComponent,
+        HomeComponent,
+        ContactComponent,
+        LocatorComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpModule,
+        RouterModule.forRoot(rootRouterConfig, { useHash: true })
+    ],
+    providers: [
+        GithubService
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 

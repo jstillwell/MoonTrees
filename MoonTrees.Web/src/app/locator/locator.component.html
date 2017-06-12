@@ -1,0 +1,19 @@
+﻿<h3>Tree Locator</h3>
+<p>The idea here is to try to find the trees closest to you or the location you enter.</p>
+
+<form (ngSubmit)="submitForm($event)" novalidate>
+  <input type="text" (ngModel)="postalCode" placeholder="Enter Location" />
+  <button type="submit">Find</button>
+</form>
+
+<div>
+  <ul>
+    <li *ngFor="let tree of trees | async">
+      {{ tree.treeType }}
+      <br />
+      {{tree.isLiving ? 'Alive and well':'No longer with us'}}
+      <br />
+      {{tree.location}}
+    </li>
+  </ul>
+</div>
