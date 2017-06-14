@@ -1,32 +1,32 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoonTrees.Data", "MoonTrees.Data\MoonTrees.Data.csproj", "{3C5075A4-DA16-4F73-AE78-BDB7729A76C2}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "MoonTrees.Web", "MoonTrees.Web\", "{073EF88D-15BD-4520-ADB2-2D26A70D86B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoonTrees.Api", "MoonTrees.Api\MoonTrees.Api.csproj", "{DA8C4F20-4B38-4F71-9687-99355AB5B560}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "moon-trees", "moon-trees\", "{E7CDB3AE-92AB-4658-B2F9-CB9FC4C45CC1}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_54025"
-		Debug.AspNetCompiler.PhysicalPath = "MoonTrees.Web\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54025\"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_37859"
+		Debug.AspNetCompiler.PhysicalPath = "moon-trees\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_37859\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_54025"
-		Release.AspNetCompiler.PhysicalPath = "MoonTrees.Web\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54025\"
+		Release.AspNetCompiler.VirtualPath = "/localhost_37859"
+		Release.AspNetCompiler.PhysicalPath = "moon-trees\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_37859\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "54025"
-		SlnRelativePath = "MoonTrees.Web\"
+		VWDPort = "37859"
+		SlnRelativePath = "moon-trees\"
 	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoonTrees.Api", "MoonTrees.Api\MoonTrees.Api.csproj", "{DA8C4F20-4B38-4F71-9687-99355AB5B560}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,14 +38,14 @@ Global
 		{3C5075A4-DA16-4F73-AE78-BDB7729A76C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C5075A4-DA16-4F73-AE78-BDB7729A76C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C5075A4-DA16-4F73-AE78-BDB7729A76C2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{073EF88D-15BD-4520-ADB2-2D26A70D86B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{073EF88D-15BD-4520-ADB2-2D26A70D86B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{073EF88D-15BD-4520-ADB2-2D26A70D86B6}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{073EF88D-15BD-4520-ADB2-2D26A70D86B6}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{DA8C4F20-4B38-4F71-9687-99355AB5B560}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DA8C4F20-4B38-4F71-9687-99355AB5B560}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA8C4F20-4B38-4F71-9687-99355AB5B560}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA8C4F20-4B38-4F71-9687-99355AB5B560}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7CDB3AE-92AB-4658-B2F9-CB9FC4C45CC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7CDB3AE-92AB-4658-B2F9-CB9FC4C45CC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7CDB3AE-92AB-4658-B2F9-CB9FC4C45CC1}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7CDB3AE-92AB-4658-B2F9-CB9FC4C45CC1}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

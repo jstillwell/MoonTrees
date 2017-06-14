@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace MoonTrees.Data.Models {
     public class Tree : TableEntity {
-        public static readonly string Pkey = "2e101809-0143-466d-982d-360e70c51336";
+        public static readonly string Pkey = "2e101809-0143-466d-982d-360e70c51336";    //static partition key for searching. this is for first generation trees only.
+        public static readonly string SecondGenKey = "";    //TODO:
+        //TODO: set up row key as a unique GUID and add second gen trees.
 
         public Tree() {
 
