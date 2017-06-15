@@ -4,14 +4,21 @@
     <TargetFramework>net462</TargetFramework>
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <AssemblyName>MoonTrees.Api</AssemblyName>
-    <OutputType>Exe</OutputType>
+    <OutputType>exe</OutputType>
     <PackageId>MoonTrees.Api</PackageId>
     <PreBuildEvent></PreBuildEvent>
     <PostBuildEvent></PostBuildEvent>
+    <ApplicationIcon />
+    <OutputTypeEx>exe</OutputTypeEx>
+    <StartupObject />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>bin\Debug\net462\MoonTrees.Api.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\net462\MoonTrees.Api.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

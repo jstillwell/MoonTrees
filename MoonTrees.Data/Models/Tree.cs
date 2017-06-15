@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MoonTrees.Data.Models {
     public class Tree : TableEntity {
-        public static readonly string Pkey = "2e101809-0143-466d-982d-360e70c51336";    //static partition key for searching. this is for first generation trees only.
+        public static readonly string FirstGenKey = "2e101809-0143-466d-982d-360e70c51336";    //static partition key for searching. this is for first generation trees only.
         public static readonly string SecondGenKey = "";    //TODO:
         //TODO: set up row key as a unique GUID and add second gen trees.
 
@@ -14,7 +14,7 @@ namespace MoonTrees.Data.Models {
 
         }
         public Tree(string treeType) {
-            this.PartitionKey = Pkey;
+            this.PartitionKey = FirstGenKey;
             this.RowKey = treeType;
         }
         public string CityAndState { get; set; }
@@ -22,12 +22,12 @@ namespace MoonTrees.Data.Models {
         public string Location { get; set; }
         public bool IsLiving {
             get {
-                if (Location.Contains('*')) {
+                if (TypeOfTree.Contains('*')) {
                     return false;
                 } else { return true; }
             }
         }
-        public string TreeType {
+        public string TypeOfTree {
             get {
                 return this.RowKey;
             }

@@ -1,12 +1,14 @@
-﻿<div md-card>
-  <div md-card-title>
-    {{tree.Location}}
+﻿<div md-card class="card">
+  <div md-card-title class="card-title">
+    {{tree.location}}
   </div>
-  <div md-card-subtitle>
-    {{tree.treeType}}
+  <div md-card-subtitle class="card-subtitle">
+    <!--{{tree.plantingDate}}-->
   </div>
-  <div md-card-content>
-    {{tree.isLiving ? 'Alive and well' : 'No longer with us'}}
+  <div md-card-content class="card-content">
+    tree type: {{tree.typeOfTree}}
+    <br />
+    status: {{tree.isLiving ? 'Alive and well' : 'No longer with us'}}
     <!--<img md-card-image>	Card image. Stretches the image to the container width-->
   </div>
 </div>

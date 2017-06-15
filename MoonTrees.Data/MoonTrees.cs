@@ -34,13 +34,13 @@ namespace MoonTrees.Data {
         }
         public async Task<IEnumerable<Tree>> Get() {
             TableQuery<Tree> query = new TableQuery<Tree>().Where(
-                TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, Tree.Pkey));
+                TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, Tree.FirstGenKey));
 
             return table.ExecuteQuery(query);
         }
         public async Task<Tree> Get(string key) {
             var tree = new Tree();
-            TableOperation retrieveOperation = TableOperation.Retrieve<Tree>(Tree.Pkey, key);
+            TableOperation retrieveOperation = TableOperation.Retrieve<Tree>(Tree.FirstGenKey, key);
 
             TableResult retrievedResult = await table.ExecuteAsync(retrieveOperation);
 

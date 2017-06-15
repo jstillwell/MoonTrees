@@ -1,7 +1,7 @@
 ﻿class Tree {
     public CityAndState: string;
-    public PlantingDate: Date;
+    public PlantingDate: string;
     public Location: string;
     public IsLiving: boolean;
-    public TreeType: string;
+    public TypeOfTree: string;
 }
