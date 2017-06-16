@@ -32,5 +32,15 @@ namespace MoonTrees.Data.Models {
                 return this.RowKey;
             }
         }
+
+        public static bool IsValid(Tree value) {
+            if (string.IsNullOrWhiteSpace(value.Location)) {
+                return false;
+            } else if (string.IsNullOrWhiteSpace(value.PlantingDate)) {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

@@ -1,29 +1,21 @@
-﻿<h3>
-  Moon Tree Locator
-</h3>
-<nav>
-	<a [routerLink]="['/']">
+﻿<nav class="nav-bar">
+  <!--replace with image-->
+  <a md-button [routerLink]="['/']">
     Home
   </a>
-  |
-	<a [routerLink]="['/about']">
+  <a md-button [routerLink]="['/about']">
     About
   </a>
-  |
-	<a [routerLink]="['/locator']">
-    Locator
-  </a>
-  |
-	<a [routerLink]="['/contact']">
+  <a md-button [routerLink]="['/contact']">
     Contact Us
   </a>
 </nav>
 
 <main>
-	<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </main>
 
 
 <footer>
-  © 2016
+  © 2016 JS Designs
 </footer>

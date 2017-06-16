@@ -1,0 +1,32 @@
+﻿<form (ngSubmit)="submitForm($event)" novalidate>
+  <div md-input-container>
+    <label>
+      Location:
+      <input type="text" placeholder="Location" (ngModel)="tree.location" />
+    </label>
+  </div>
+  <div md-input-container>
+    <label>
+      Is tree alive:
+      <input md-checkbox (ngModel)="tree.isLiving" />
+    </label>
+  </div>
+  <div md-input-container>
+    <label>
+      Type of Tree:
+      <input type="text" placeholder="Sycamore, Oak, etc." (ngModel)="tree.typeOfTree" />
+    </label>
+  </div>
+  <div md-input-container>
+    <label>
+      Website:
+      <input type="text" placeholder="link to info on the specific tree or location" (ngModel)="tree.website" />
+    </label>
+  </div>
+  <div md-input-container>
+    <label>
+      Coordinates:
+      <input type="text" placeholder="GPS Coordinates" (ngModel)="tree.geolocation" />
+    </label>
+  </div>
+</form>

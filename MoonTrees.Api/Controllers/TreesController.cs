@@ -15,7 +15,7 @@ namespace MoonTrees.Api.Controllers {
     [EnableCors("AllowSpecificOrigins")]
     public class TreesController : Controller {
         Data.MoonTrees db = new Data.MoonTrees();
-        
+
         /// <summary>
         /// Gets all trees
         /// </summary>
@@ -48,9 +48,16 @@ namespace MoonTrees.Api.Controllers {
             return Ok(trees);
         }
 
-        //[HttpPost]
-        //public void Post([FromBody]string value) {
-        //}
+        [HttpPost]
+        public IActionResult Post([FromBody]Tree value) {
+            var tree = new Tree();
+
+            if (Tree.IsValid(value)) {
+                tree = value;
+            }
+            
+            return Created($"{tree.Location}", tree);
+        }
         //[HttpPut("{id}")]
         //public void Put(int id, [FromBody]string value) {
         //}

@@ -13,6 +13,10 @@ import { HomeComponent } from './home/home.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { ContactComponent } from './contact/contact.component';
 import { LocatorComponent } from './locator/locator.component';
+import { TreeMapComponent } from './map/map.component';
+import { GeolocationService } from './geolocation/locator.service';
+
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
     declarations: [
@@ -22,17 +26,21 @@ import { LocatorComponent } from './locator/locator.component';
         ContactComponent,
         LocatorComponent,
         TableComponent,
-        TreeCardComponent
+        TreeCardComponent,
+        TreeMapComponent
     ],
     imports: [
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
         HttpModule,
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyDbh8SHuB2blR--0yahfxTyDq7kDn2wPzc'
+        }),
         RouterModule.forRoot(rootRouterConfig, { useHash: true })
     ],
     providers: [
-        
+        GeolocationService
     ],
     bootstrap: [AppComponent]
 })
