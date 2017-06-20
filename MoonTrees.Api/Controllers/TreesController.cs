@@ -21,7 +21,8 @@ namespace MoonTrees.Api.Controllers {
         /// </summary>
         /// <returns>List of trees</returns>
         [HttpGet]
-        public async Task<IEnumerable<Tree>> Get() {
+        [ProducesResponseType(typeof(OkResult), 200)]
+        public async Task<IEnumerable<TreeEntity>> Get() {
             var trees = await db.Get();
 
             return trees;
@@ -32,6 +33,7 @@ namespace MoonTrees.Api.Controllers {
         /// <param name="id">trees id</param>
         /// <returns>a tree</returns>
         [HttpGet("{id}")]
+        [ProducesResponseType(typeof(OkResult), 200)]
         public IActionResult Get([FromQuery]string id) {
             var tree = db.Get(id);
             return Ok(tree);
@@ -49,8 +51,9 @@ namespace MoonTrees.Api.Controllers {
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]Tree value) {
-            var tree = new Tree();
+        [ProducesResponseType(typeof(CreatedAtRouteResult), 201)]
+        public IActionResult Post([FromBody]TreeEntity value) {
+            var tree = new TreeEntity();
 
             if (Tree.IsValid(value)) {
                 tree = value;

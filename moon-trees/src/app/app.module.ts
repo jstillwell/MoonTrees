@@ -5,18 +5,22 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-import { TableComponent } from './table/table.component';
-import { TreeCardComponent } from './cards/tree/tree.component';
 
-import { AboutComponent } from './about/about.component';
-import { HomeComponent } from './home/home.component';
+//components
+import { TableComponent } from './components/table/table.component';
+import { TreeCardComponent } from './components/cards/tree/tree.component';
+import { AboutComponent } from './components/about/about.component';
+import { HomeComponent } from './components/home/home.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { ContactComponent } from './contact/contact.component';
-import { LocatorComponent } from './locator/locator.component';
-import { TreeMapComponent } from './map/map.component';
-import { GeolocationService } from './geolocation/locator.service';
+import { ContactComponent } from './components/contact/contact.component';
+import { LocatorComponent } from './components/locator/locator.component';
+import { TreeMapComponent } from './components/map/map.component';
 
 import { AgmCoreModule } from '@agm/core';
+
+//services
+import { GeolocationService } from './services/geolocation/locator.service';
+import { TreeService } from './services/trees/tree.service';
 
 @NgModule({
     declarations: [
@@ -40,7 +44,8 @@ import { AgmCoreModule } from '@agm/core';
         RouterModule.forRoot(rootRouterConfig, { useHash: true })
     ],
     providers: [
-        GeolocationService
+        GeolocationService,
+        TreeService
     ],
     bootstrap: [AppComponent]
 })

@@ -21,10 +21,10 @@ namespace MoonTrees.Data {
             table = tableClient.GetTableReference("Trees");
             table.CreateIfNotExists();
         }
-        public IEnumerable<Tree> Search(string filter, string searchValue) {
-            var trees = new List<Tree>();
+        public IEnumerable<TreeEntity> Search(string filter, string searchValue) {
+            var trees = new List<TreeEntity>();
 
-            TableQuery<Tree> rangeQuery = new TableQuery<Tree>().Where(TableQuery.CombineFilters(
+            TableQuery<TreeEntity> rangeQuery = new TableQuery<TreeEntity>().Where(TableQuery.CombineFilters(
                 TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, MoonTreeStorageString),
                 TableOperators.And,
                 TableQuery.GenerateFilterCondition(filter, QueryComparisons.Equal, searchValue)));
@@ -32,33 +32,33 @@ namespace MoonTrees.Data {
             return table.ExecuteQuery(rangeQuery);
 
         }
-        public async Task<IEnumerable<Tree>> Get() {
-            TableQuery<Tree> query = new TableQuery<Tree>().Where(
-                TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, Tree.FirstGenKey));
+        public async Task<IEnumerable<TreeEntity>> Get() {
+            TableQuery<TreeEntity> query = new TableQuery<TreeEntity>().Where(
+                TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, TreeEntity.FirstGenKey));
 
             return table.ExecuteQuery(query);
         }
-        public async Task<Tree> Get(string key) {
-            var tree = new Tree();
-            TableOperation retrieveOperation = TableOperation.Retrieve<Tree>(Tree.FirstGenKey, key);
+        public async Task<TreeEntity> Get(string key) {
+            var tree = new TreeEntity();
+            TableOperation retrieveOperation = TableOperation.Retrieve<TreeEntity>(TreeEntity.FirstGenKey, key);
 
             TableResult retrievedResult = await table.ExecuteAsync(retrieveOperation);
 
             if (retrievedResult.Result == null) {
                 throw new ArgumentException($"The record, {key}, could not be found");
             } else {
-                tree = retrievedResult.Result as Tree;
+                tree = retrievedResult.Result as TreeEntity;
             }
 
             return tree;
         }
-        public async Task Insert(Tree tree) {
+        public async Task Insert(TreeEntity tree) {
             TableOperation insertOperation = TableOperation.Insert(tree);
 
             // Execute the insert operation.
             await table.ExecuteAsync(insertOperation);
         }
-        public void BulkInsert(IEnumerable<Tree> trees) {
+        public void BulkInsert(IEnumerable<TreeEntity> trees) {
             TableBatchOperation batchOperation = new TableBatchOperation();
             foreach (var tree in trees) {
                 batchOperation.Insert(tree);

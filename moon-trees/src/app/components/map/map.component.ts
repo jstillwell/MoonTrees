@@ -1,8 +1,8 @@
 ﻿import { Component } from '@angular/core';
 import { Http } from '@angular/http';
-import { TreeService } from '../trees/locator.service';
+import { TreeService } from '../../services/trees/tree.service';
 import { Observable } from "rxjs/Observable";
-import { GeolocationService } from '../geolocation/locator.service';
+import { GeolocationService } from '../../services/geolocation/locator.service';
 
 @Component({
     selector: 'tree-map',
@@ -14,14 +14,19 @@ export class TreeMapComponent {
     lng: number;
     treeService: TreeService;
     trees: Observable<Tree[]>;
-    locationService: GeolocationService;
+    locationService = new GeolocationService();
 
     constructor(private http: Http) {
         this.treeService = new TreeService(http);
         this.trees = this.treeService.getTrees();
         //console.info('All trees', this.trees);
-        this.locationService = new GeolocationService();
-        this.locationService.getPosition();
+        this.locationService.getPosition().then((data) => {
+            this.lat = data.coords.latitude;
+            this.lng = data.coords.longitude;
+            console.info('your coords', data.coords);
+        }).catch(function (err) {
+            console.error(err);
+        });
     }
 
     private handlePositionChanged(e) {

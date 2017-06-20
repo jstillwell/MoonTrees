@@ -1,6 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { Http, URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { SearchFilter } from "app/viewModels/search-filters";
 
 @Injectable()
 export class TreeService {
@@ -18,9 +19,9 @@ export class TreeService {
         return this.http.get(this.url)
             .map((res) => res.json());
     }
-    searchTrees(filter: string, searchString: string) {
+    searchTrees(filter: SearchFilter, searchString: string) {
         let params = new URLSearchParams();
-        params.set('filter', filter);
+        params.set('filter', filter.toString());
         params.set('searchValue', searchString);
 
         return this.http.get(`{this.url}`, { search: params })

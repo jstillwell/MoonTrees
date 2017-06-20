@@ -1,6 +1,6 @@
 ﻿import { Component } from '@angular/core';
 import { MdInputContainer } from '@angular/material';
-import { TreeService } from '../../trees/locator.service';
+import { TreeService } from '../../../services/trees/tree.service';
 
 @Component({
   selector: 'add-tree-card',

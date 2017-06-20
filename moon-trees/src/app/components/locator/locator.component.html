@@ -1,0 +1,12 @@
+﻿<h3>Tree Locator</h3>
+<p>The idea here is to try to find the trees closest to you or the location you enter.</p>
+
+<form (ngSubmit)="submitForm($event)" novalidate>
+  <input type="text" (ngModel)="selected.searchValue" name="searchValue" placeholder="Enter search criteria" />
+  <select [(ngModel)]="selected.filter" name="filter">
+    <option *ngFor="let filter of filters" value="filter">
+      {{filter}}
+    </option>
+  </select>
+  <button type="submit">Find</button>
+</form>
