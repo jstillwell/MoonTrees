@@ -28,7 +28,7 @@ export class LocatorComponent {
     }
     ngOnInit() {
         this.filters = Object.keys(this.filterOptions).filter((value) => {
-            return value !== undefined && typeof (value) !== 'number';
+            return value !== undefined || typeof (value) !== 'number' || isNaN(value);
         });
     }
 

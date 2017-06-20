@@ -6,9 +6,13 @@
     <!--{{tree.plantingDate}}-->
   </div>
   <div md-card-content class="card-content">
-    tree type: {{tree.typeOfTree}}
+    Tree type: {{tree.typeOfTree}}
     <br />
-    status: {{tree.isLiving ? 'Alive and well' : 'No longer with us'}}
+    Status: {{tree.isLiving ? 'Alive and well' : 'No longer with us'}}
+    <br />
     <!--<img md-card-image>	Card image. Stretches the image to the container width-->
+    Website: <a href="{{tree.link}}">More info</a>
+    <br />
+    Coordinates: {{tree.latitude}}, {{tree.longitude}}
   </div>
 </div>

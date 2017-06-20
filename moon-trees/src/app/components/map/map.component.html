@@ -1,5 +1,7 @@
 ﻿<tree-locator></tree-locator>
 <agm-map (positionChanged)="handlePositionChanged($event)" [latitude]="lat" [longitude]="lng">
-  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-  <agm-marker *ngFor="let tree of trees | async" [latitude]="tree.latitude" [longitude]="tree.longitude"></agm-marker>
+  <agm-marker [latitude]="lat" [longitude]="lng" label="Your Location" title="This is you, or as close as we can get."></agm-marker>
+  <agm-marker *ngFor="let tree of filteredTrees | async" [latitude]="tree.latitude" [longitude]="tree.longitude" label="{{tree.typeOfTree}}" title="{{tree.location}}"></agm-marker>
 </agm-map>
+
+<tree-table [trees]="trees"></tree-table>

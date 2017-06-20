@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { TreeService } from '../../services/trees/tree.service';
 import { Observable } from "rxjs/Observable";
 import { GeolocationService } from '../../services/geolocation/locator.service';
+import { GoogleMapsAPIWrapper } from '@agm/core';
 
 @Component({
     selector: 'tree-map',
@@ -14,16 +15,21 @@ export class TreeMapComponent {
     lng: number;
     treeService: TreeService;
     trees: Observable<Tree[]>;
+    filteredTrees: Observable<Tree[]>;
+    //gMapsApi: GoogleMapsAPIWrapper = new GoogleMapsAPIWrapper();
     locationService = new GeolocationService();
 
     constructor(private http: Http) {
         this.treeService = new TreeService(http);
+    }
+    ngOnInit() {
         this.trees = this.treeService.getTrees();
-        //console.info('All trees', this.trees);
+        this.filteredTrees = this.trees.map(trees => trees.filter(tree => tree.Latitude !== 0));
+        
         this.locationService.getPosition().then((data) => {
             this.lat = data.coords.latitude;
             this.lng = data.coords.longitude;
-            console.info('your coords', data.coords);
+            //console.info('your coords', data.coords);
         }).catch(function (err) {
             console.error(err);
         });

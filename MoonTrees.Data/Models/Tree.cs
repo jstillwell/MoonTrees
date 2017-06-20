@@ -13,33 +13,30 @@ namespace MoonTrees.Data.Models {
         public TreeEntity() {
 
         }
-        public TreeEntity(string treeType) {
-            this.PartitionKey = FirstGenKey;
+        public TreeEntity(string treeType, int generation) {
+            if (true) {
+                this.PartitionKey = FirstGenKey;
+            }
             this.RowKey = treeType;
         }
+        public string BetterLocation { get; set; }
+        public string RealLocation { get; set; }
+        public string Link { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
         public string CityAndState { get; set; }
         public string PlantingDate { get; set; }
         public string Location { get; set; }
-        public bool IsLiving {
-            get {
-                if (TypeOfTree.Contains('*')) {
-                    return false;
-                } else { return true; }
-            }
-        }
-        public string TypeOfTree {
-            get {
-                return this.RowKey;
-            }
-        }
+        public bool IsLiving { get; set; }
+        public string TypeOfTree { get; set; }
 
-        public Tree ToObject() {
+        public static Tree ToObject(TreeEntity entity) {
             var tree = new Tree {
-                CityAndState = this.CityAndState,
-                PlantingDate = this.PlantingDate,
-                Location = this.Location,
-                IsLiving = this.IsLiving,
-                TypeOfTree = this.TypeOfTree
+                CityAndState = entity.CityAndState,
+                PlantingDate = entity.PlantingDate,
+                Location = entity.Location,
+                IsLiving = entity.IsLiving,
+                TypeOfTree = entity.TypeOfTree
             };
 
             return tree;
@@ -48,10 +45,12 @@ namespace MoonTrees.Data.Models {
 
     public class Tree {
         public string Id { get; set; }
-        public string Address { get; set; }
-        public string Coordinates { get; set; }
-        public string Website { get; set; }
-
+        public string GenerationId { get; set; }
+        public string BetterLocation { get; set; }
+        public string RealLocation { get; set; }
+        public string Link { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
         public string CityAndState { get; set; }
         public string PlantingDate { get; set; }
         public string Location { get; set; }
