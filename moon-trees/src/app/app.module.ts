@@ -4,7 +4,10 @@ import { rootRouterConfig } from './app.routes';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
+import { MaterialModule } from '@angular/material';
+import 'hammerjs';
 
 //components
 import { TableComponent } from './components/table/table.component';
@@ -35,9 +38,11 @@ import { TreeService } from './services/trees/tree.service';
     ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         FormsModule,
         ReactiveFormsModule,
         HttpModule,
+        MaterialModule,
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyDbh8SHuB2blR--0yahfxTyDq7kDn2wPzc'
         }),

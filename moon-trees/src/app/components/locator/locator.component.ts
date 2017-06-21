@@ -10,7 +10,7 @@ import { SearchFilter } from "app/viewModels/search-filters";
 @Component({
     selector: 'tree-locator',
     templateUrl: './locator.component.html',
-    styleUrls: ['./locator.component.css']
+    styleUrls: ['./locator.component.less']
 })
 export class LocatorComponent {
     @Output() searchResults = new EventEmitter();
