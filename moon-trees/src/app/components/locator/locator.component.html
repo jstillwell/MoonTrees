@@ -1,13 +1,13 @@
 ﻿<h3>Tree Locator</h3>
 
 <form class="form" (ngSubmit)="submitForm($event)" novalidate>
-  <div md-input-container>
+  <md-input-container>
     <input mdInput type="text" (ngModel)="selected.searchValue" name="searchValue" placeholder="Enter search criteria" />
-  </div>
-  <select md-select placeholder="Filter" [(ngModel)]="selected.filter" name="filter">
-    <option md-option *ngFor="let filter of filters" value="filter">
+  </md-input-container>
+  <md-select placeholder="Filter" value="filter" [(ngModel)]="selected.filter" name="filter">
+    <md-option *ngFor="let filter of filters" value="filter">
       {{filter}}
-    </option>
-  </select>
+    </md-option>
+  </md-select>
   <button md-button type="submit">Find</button>
 </form>

@@ -229,6 +229,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IMoonTree.cs" />
     <Compile Include="MoonTrees.cs" />
     <Compile Include="Models\Tree.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

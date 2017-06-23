@@ -1,17 +1,20 @@
 ﻿<nav class="nav-bar">
-  <img src="../assets/moontree_emblem.png" height="40" />
-  <a md-button [routerLink]="['/']">
-    Home
-  </a>
-  <a md-button [routerLink]="['/about']">
-    About
-  </a>
-  <a md-button [routerLink]="['/contact']">
-    Contact Us
-  </a>
-  <a md-button [routerLink]="['/map']">
-    Map
-  </a>
+  <div layout="row" class="zero">
+
+    <a class="home-icon" [routerLink]="['/']">
+      <img src="../assets/moontree_emblem.png" height="40" title="Home" />
+    </a>
+    <a md-button [routerLink]="['/about']">
+      About
+    </a>
+    <a md-button [routerLink]="['/contact']">
+      Contact
+    </a>
+    <a md-button [routerLink]="['/map']">
+      Map
+    </a>
+
+  </div>
 </nav>
 
 <main>

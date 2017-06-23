@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MoonTrees.Data {
-    public class MoonTrees {
+    public class MoonTrees : IMoonTree {
         private static readonly string MoonTreeStorageString = Environment.GetEnvironmentVariable("MoonTreeStorage");
 
         CloudTable table;
@@ -52,11 +52,13 @@ namespace MoonTrees.Data {
 
             return tree;
         }
-        public async Task Insert(TreeEntity tree) {
+        public async Task<string> Insert(TreeEntity tree) {
             TableOperation insertOperation = TableOperation.Insert(tree);
-
-            // Execute the insert operation.
+            tree.RowKey = new Guid().ToString();
+            // TODO: create a new ID for this and return it
             await table.ExecuteAsync(insertOperation);
+
+            return tree.RowKey;
         }
         public void BulkInsert(IEnumerable<TreeEntity> trees) {
             TableBatchOperation batchOperation = new TableBatchOperation();
