@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace MoonTrees.Data {
     public interface IMoonTree {
-        IEnumerable<TreeEntity> Search(string filter, string searchValue);
+        Task<IEnumerable<TreeEntity>> Search(string filter, string searchValue);
         Task<IEnumerable<TreeEntity>> Get();
         Task<TreeEntity> Get(string key);
         Task<string> Insert(TreeEntity tree);
-        BulkInsert(IEnumerable<TreeEntity> trees);
+        void BulkInsert(IEnumerable<TreeEntity> trees);
     }
 }

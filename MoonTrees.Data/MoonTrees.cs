@@ -21,15 +21,38 @@ namespace MoonTrees.Data {
             table = tableClient.GetTableReference("Trees");
             table.CreateIfNotExists();
         }
-        public IEnumerable<TreeEntity> Search(string filter, string searchValue) {
-            var trees = new List<TreeEntity>();
+        public async Task<IEnumerable<TreeEntity>> Search(string filter, string searchValue) {
+            var trees = await Get();
+            var filteredTrees = new List<TreeEntity>();
+            foreach (var tree in trees) {
+                switch (filter) {
+                    case "Location":
+                        if (tree.Location.Contains(searchValue)) {
+                            filteredTrees.Add(tree);
+                        }
+                    break;
+                    case "TypeOfTree":
+                        if (tree.TypeOfTree.Contains(searchValue)) {
+                            filteredTrees.Add(tree);
+                        }
+                        break;
+                    case "IsLiving":
+                        if (tree.IsLiving) {
+                            filteredTrees.Add(tree);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
 
-            TableQuery<TreeEntity> rangeQuery = new TableQuery<TreeEntity>().Where(TableQuery.CombineFilters(
-                TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, MoonTreeStorageString),
-                TableOperators.And,
-                TableQuery.GenerateFilterCondition(filter, QueryComparisons.Equal, searchValue)));
+            return filteredTrees;
+            //TableQuery<TreeEntity> rangeQuery = new TableQuery<TreeEntity>().Where(TableQuery.CombineFilters(
+            //    TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, MoonTreeStorageString),
+            //    TableOperators.And,
+            //    TableQuery.GenerateFilterCondition(filter, QueryComparisons.Equal, searchValue)));
 
-            return table.ExecuteQuery(rangeQuery);
+            //return table.ExecuteQuery(rangeQuery);
 
         }
         public async Task<IEnumerable<TreeEntity>> Get() {
