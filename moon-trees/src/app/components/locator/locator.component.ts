@@ -13,7 +13,7 @@ import { SearchFilter } from "app/viewModels/search-filters";
     styleUrls: ['./locator.component.less']
 })
 export class LocatorComponent {
-    @Output() searchResults = new EventEmitter();
+    @Output() onResultsChanged: EventEmitter<any> = new EventEmitter();
 
     selected: SearchObject = new SearchObject();
     searchString: string;
@@ -27,17 +27,16 @@ export class LocatorComponent {
         this.trees = this.treeService.getTrees();
     }
     ngOnInit() {
-        this.filters = Object.keys(this.filterOptions).filter((value) => {
-            return value !== undefined || typeof (value) !== 'number' || isNaN(value);
-        });
+        let allFilters = Object.keys(this.filterOptions);
+        this.filters = allFilters.slice(allFilters.length / 2);
     }
 
     submitForm(e): void {
         e.preventDefault();
-        let resp = this.treeService.searchTrees(this.selected.filter, this.selected.searchValue).map((res) =>
-            res.json()
-        );
-        //TODO: emit event or promise
-        console.log('Tree search results', resp);
+        console.info("Form values", this.selected);
+        this.treeService.searchTrees(this.selected.filter, this.selected.searchValue)
+            .subscribe(message => {
+                this.onResultsChanged.emit(message);
+            });
     }
 }

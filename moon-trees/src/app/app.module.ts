@@ -8,8 +8,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
+import { CookieModule } from 'ngx-cookie';
 
 //components
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { TableComponent } from './components/table/table.component';
 import { TreeCardComponent } from './components/cards/tree/tree.component';
 import { AboutComponent } from './components/about/about.component';
@@ -18,6 +20,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { ContactComponent } from './components/contact/contact.component';
 import { LocatorComponent } from './components/locator/locator.component';
 import { TreeMapComponent } from './components/map/map.component';
+import { SplashComponent } from './components/splash/splash.component';
 
 import { AgmCoreModule } from '@agm/core';
 
@@ -34,7 +37,9 @@ import { TreeService } from './services/trees/tree.service';
         LocatorComponent,
         TableComponent,
         TreeCardComponent,
-        TreeMapComponent
+        TreeMapComponent,
+        SplashComponent,
+        NavbarComponent
     ],
     imports: [
         BrowserModule,
@@ -43,6 +48,7 @@ import { TreeService } from './services/trees/tree.service';
         ReactiveFormsModule,
         HttpModule,
         MaterialModule,
+        CookieModule.forRoot(),
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyDbh8SHuB2blR--0yahfxTyDq7kDn2wPzc'
         }),

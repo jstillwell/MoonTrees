@@ -27,33 +27,25 @@ namespace MoonTrees.Data {
             foreach (var tree in trees) {
                 switch (filter) {
                     case "Location":
-                        if (tree.Location.Contains(searchValue)) {
+                        if (tree.Location.IndexOf(searchValue, StringComparison.InvariantCultureIgnoreCase) != -1) {
                             filteredTrees.Add(tree);
                         }
-                    break;
+                        break;
                     case "TypeOfTree":
-                        if (tree.TypeOfTree.Contains(searchValue)) {
+                        if (tree.TypeOfTree.IndexOf(searchValue, StringComparison.InvariantCultureIgnoreCase) >= 0) {
                             filteredTrees.Add(tree);
                         }
                         break;
                     case "IsLiving":
-                        if (tree.IsLiving) {
+                        var criteria = bool.Parse(searchValue);
+                        if (tree.IsLiving == criteria) {
                             filteredTrees.Add(tree);
                         }
-                        break;
-                    default:
                         break;
                 }
             }
 
             return filteredTrees;
-            //TableQuery<TreeEntity> rangeQuery = new TableQuery<TreeEntity>().Where(TableQuery.CombineFilters(
-            //    TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, MoonTreeStorageString),
-            //    TableOperators.And,
-            //    TableQuery.GenerateFilterCondition(filter, QueryComparisons.Equal, searchValue)));
-
-            //return table.ExecuteQuery(rangeQuery);
-
         }
         public async Task<IEnumerable<TreeEntity>> Get() {
             TableQuery<TreeEntity> query = new TableQuery<TreeEntity>().Where(

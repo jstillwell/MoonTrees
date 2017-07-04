@@ -1,6 +1,6 @@
 ﻿<div class="table-component-container">
   <div md-grid-list cols="1" rowHeight="2:1">
-    <div md-grid-tile *ngFor="let tree of trees | async">
+    <div md-grid-tile *ngFor="let tree of trees">
       <tree-card [tree]="tree"></tree-card>
     </div>
   </div>

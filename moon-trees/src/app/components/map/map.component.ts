@@ -1,7 +1,8 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, OnDestroy } from '@angular/core';
 import { Http } from '@angular/http';
 import { TreeService } from '../../services/trees/tree.service';
 import { Observable } from "rxjs/Observable";
+import { Subscription } from 'rxjs/Subscription';
 import { GeolocationService } from '../../services/geolocation/locator.service';
 import { GoogleMapsAPIWrapper } from '@agm/core';
 
@@ -15,27 +16,30 @@ export class TreeMapComponent {
     lng: number;
     treeService: TreeService;
     trees: Observable<Tree[]>;
-    filteredTrees: Observable<Tree[]>;
-    //gMapsApi: GoogleMapsAPIWrapper = new GoogleMapsAPIWrapper();
+    filteredTrees: Tree[];
     locationService = new GeolocationService();
+    subscription: Subscription;
 
     constructor(private http: Http) {
         this.treeService = new TreeService(http);
     }
     ngOnInit() {
         this.trees = this.treeService.getTrees();
-        this.filteredTrees = this.trees.map(trees => trees.filter(tree => tree.Latitude !== 0));
         
         this.locationService.getPosition().then((data) => {
             this.lat = data.coords.latitude;
             this.lng = data.coords.longitude;
-            //console.info('your coords', data.coords);
         }).catch(function (err) {
             console.error(err);
         });
     }
-
-    private handlePositionChanged(e) {
+    handlePositionChanged(e) {
         console.info("position changed", e);
+    }
+    handleResultsChanged(e) {
+        this.filteredTrees = e;
+    }
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }

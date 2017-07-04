@@ -34,7 +34,7 @@ namespace MoonTrees.Api.Controllers {
         /// <returns>a tree</returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(OkResult), 200)]
-        public IActionResult Get([FromQuery]string id) {
+        public IActionResult Get(string id) {
             var tree = db.Get(id);
             return Ok(tree);
         }
@@ -45,8 +45,8 @@ namespace MoonTrees.Api.Controllers {
         /// <param name="searchValue">what to search for</param>
         /// <returns>List of trees containing the search term</returns>
         [HttpGet("{filter}/{searchValue}")]
-        public IActionResult Search([FromQuery]string filter, [FromQuery]string searchValue) {
-            var trees = db.Search(filter, searchValue);
+        public async Task<IActionResult> Search(string filter, string searchValue) {
+            var trees = await db.Search(filter, searchValue);
             return Ok(trees);
         }
 

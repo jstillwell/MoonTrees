@@ -20,11 +20,7 @@ export class TreeService {
             .map((res) => res.json());
     }
     searchTrees(filter: SearchFilter, searchString: string) {
-        let params = new URLSearchParams();
-        params.set('filter', filter.toString());
-        params.set('searchValue', searchString);
-
-        return this.http.get(`{this.url}`, { search: params })
+        return this.http.get(`${this.url}/${filter.toString()}/${searchString}`)
             .map((res) => res.json());
     }
 }
