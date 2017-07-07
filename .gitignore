@@ -261,3 +261,5 @@ __pycache__/
 *.pyc
 /MoonTrees.Api.7z
 /MoonTrees.Data.7z
+/moon-trees/wwwroot
+/moon-trees/wwwroot

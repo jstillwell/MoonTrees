@@ -20,7 +20,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { ContactComponent } from './components/contact/contact.component';
 import { LocatorComponent } from './components/locator/locator.component';
 import { TreeMapComponent } from './components/map/map.component';
-import { SplashComponent } from './components/splash/splash.component';
+import { AstronautComponent } from './components/astronaut/astronaut.component';
 
 import { AgmCoreModule } from '@agm/core';
 
@@ -38,7 +38,7 @@ import { TreeService } from './services/trees/tree.service';
         TableComponent,
         TreeCardComponent,
         TreeMapComponent,
-        SplashComponent,
+        AstronautComponent,
         NavbarComponent
     ],
     imports: [

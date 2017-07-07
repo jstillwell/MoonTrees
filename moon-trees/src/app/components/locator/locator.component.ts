@@ -13,6 +13,7 @@ import { SearchFilter } from "app/viewModels/search-filters";
     styleUrls: ['./locator.component.less']
 })
 export class LocatorComponent {
+    @Output() onSearchClicked: EventEmitter<any> = new EventEmitter();
     @Output() onResultsChanged: EventEmitter<any> = new EventEmitter();
 
     selected: SearchObject = new SearchObject();
@@ -33,6 +34,8 @@ export class LocatorComponent {
 
     submitForm(e): void {
         e.preventDefault();
+        this.onSearchClicked.emit(null);
+
         console.info("Form values", this.selected);
         this.treeService.searchTrees(this.selected.filter, this.selected.searchValue)
             .subscribe(message => {

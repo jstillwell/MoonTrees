@@ -4,6 +4,9 @@
 /dist
 /tmp
 /out-tsc
+/wwwroot
+/App_Data
+/{E7CDB3AE-92AB-4658-B2F9-CB9FC4C45CC1}
 
 # dependencies
 /node_modules

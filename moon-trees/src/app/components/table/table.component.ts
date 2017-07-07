@@ -1,5 +1,5 @@
 ﻿import { Component, Input } from '@angular/core';
-import { MdGridListModule, MdGridTile } from '@angular/material';
+import { MdGridListModule, MdGridTile, MdSpinner } from '@angular/material';
 
 @Component({
   selector: 'tree-table',
@@ -8,4 +8,5 @@ import { MdGridListModule, MdGridTile } from '@angular/material';
 })
 export class TableComponent {
     @Input() trees: Array<any>;
+    @Input() isLoading: boolean;
 }

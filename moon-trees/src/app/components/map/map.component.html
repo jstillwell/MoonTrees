@@ -1,7 +1,7 @@
-﻿<tree-locator (onResultsChanged)="handleResultsChanged($event)"></tree-locator>
+﻿<tree-locator (onSearchClicked)="handleSearchClicked($event)" (onResultsChanged)="handleResultsChanged($event)"></tree-locator>
 <agm-map (positionChanged)="handlePositionChanged($event)" [latitude]="lat" [longitude]="lng">
-  <agm-marker [latitude]="lat" [longitude]="lng" label="Your Location"></agm-marker>
+  <agm-marker [latitude]="lat" [longitude]="lng" label="You"></agm-marker>
   <agm-marker *ngFor="let tree of filteredTrees" [latitude]="tree.latitude" [longitude]="tree.longitude" label="{{tree.typeOfTree}}" title="{{tree.location}}"></agm-marker>
 </agm-map>
 
-<tree-table [trees]="filteredTrees"></tree-table>
+<tree-table [trees]="filteredTrees" [isLoading]="isTableLoading"></tree-table>

@@ -1,0 +1,124 @@
+﻿#menu-animation {
+  z-index: 7;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#tree {
+  visibility: hidden;
+  width: 30%;
+  height: 60%;
+  position: absolute;
+  bottom: 20%;
+  left: 20%;
+  z-index: 9;
+  background-repeat: no-repeat;
+  animation-duration: 5s;
+  animation-name: grow;
+  animation-delay: 3s;
+}
+
+#astronaut-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  width: 100%;
+}
+
+#astronaut {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background-image: url('../../../assets/astronaut-and-flag.png');
+  background-repeat: no-repeat;
+  z-index: 10;
+  animation-duration: 5s;
+  animation-name: bouncein;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bouncein {
+  0% {
+    margin-left: 100%;
+  }
+
+  10% {
+    top: 50%;
+  }
+
+  20% {
+    top: 0%;
+  }
+
+  30% {
+    top: 50%;
+  }
+
+  40% {
+    top: 0%
+  }
+
+  50% {
+    top: 50%;
+  }
+
+  60% {
+    top: 0%;
+  }
+
+  70% {
+    top: 50%;
+  }
+
+  80% {
+    top: 0%;
+  }
+
+  90% {
+    top: 50%;
+  }
+
+  100% {
+    margin-left: 0%;
+  }
+}
+
+@keyframes fadein {
+  from {
+    visibility: visible;
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes moonrise {
+  from {
+    position: relative;
+    bottom: -100%;
+  }
+
+  to {
+    top: 0;
+  }
+}
+
+@keyframes grow {
+  from {
+    visibility: visible;
+    height: 2%;
+    width: 2%;
+  }
+
+  to {
+    height: 60%;
+    width: 30%;
+  }
+}

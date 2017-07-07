@@ -19,11 +19,13 @@ export class TreeMapComponent {
     filteredTrees: Tree[];
     locationService = new GeolocationService();
     subscription: Subscription;
+    isTableLoading: boolean;
 
     constructor(private http: Http) {
         this.treeService = new TreeService(http);
     }
     ngOnInit() {
+        this.isTableLoading = false;
         this.trees = this.treeService.getTrees();
         
         this.locationService.getPosition().then((data) => {
@@ -36,7 +38,11 @@ export class TreeMapComponent {
     handlePositionChanged(e) {
         console.info("position changed", e);
     }
+    handleSearchClicked(e) {
+        this.isTableLoading = true;
+    }
     handleResultsChanged(e) {
+        this.isTableLoading = false;
         this.filteredTrees = e;
     }
     ngOnDestroy() {
