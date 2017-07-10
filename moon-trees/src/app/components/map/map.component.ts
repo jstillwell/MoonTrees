@@ -9,16 +9,16 @@ import { GoogleMapsAPIWrapper } from '@agm/core';
 @Component({
     selector: 'tree-map',
     templateUrl: './map.component.html',
-    styleUrls: ['./map.component.css']
+    styleUrls: ['./map.component.less']
 })
 export class TreeMapComponent {
     lat: number;
     lng: number;
+    position: Position;
     treeService: TreeService;
     trees: Observable<Tree[]>;
     filteredTrees: Tree[];
     locationService = new GeolocationService();
-    subscription: Subscription;
     isTableLoading: boolean;
 
     constructor(private http: Http) {
@@ -29,6 +29,7 @@ export class TreeMapComponent {
         this.trees = this.treeService.getTrees();
         
         this.locationService.getPosition().then((data) => {
+            this.position = data;
             this.lat = data.coords.latitude;
             this.lng = data.coords.longitude;
         }).catch(function (err) {
@@ -44,8 +45,5 @@ export class TreeMapComponent {
     handleResultsChanged(e) {
         this.isTableLoading = false;
         this.filteredTrees = e;
-    }
-    ngOnDestroy() {
-        this.subscription.unsubscribe();
     }
 }
