@@ -75,7 +75,7 @@ namespace MoonTrees.Data {
 
             return tree.RowKey;
         }
-        public void BulkInsert(IEnumerable<TreeEntity> trees) {
+        private void BulkInsert(IEnumerable<TreeEntity> trees) {
             TableBatchOperation batchOperation = new TableBatchOperation();
             foreach (var tree in trees) {
                 batchOperation.Insert(tree);

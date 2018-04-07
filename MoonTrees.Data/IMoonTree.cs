@@ -11,6 +11,6 @@ namespace MoonTrees.Data {
         Task<IEnumerable<TreeEntity>> Get();
         Task<TreeEntity> Get(string key);
         Task<string> Insert(TreeEntity tree);
-        void BulkInsert(IEnumerable<TreeEntity> trees);
+        //void BulkInsert(IEnumerable<TreeEntity> trees);
     }
 }

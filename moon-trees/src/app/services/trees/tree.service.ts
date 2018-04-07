@@ -1,4 +1,4 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http, URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { SearchFilter } from "app/viewModels/search-filters";
@@ -19,6 +19,7 @@ export class TreeService {
         return this.http.get(this.url)
             .map((res) => res.json());
     }
+    //addTree()
     searchTrees(filter: SearchFilter, searchString: string) {
         return this.http.get(`${this.url}/${filter.toString()}/${searchString}`)
             .map((res) => res.json());
