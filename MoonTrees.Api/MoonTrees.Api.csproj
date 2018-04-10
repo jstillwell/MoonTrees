@@ -22,6 +22,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Properties\PublishProfiles\MoonTreesApi - Web Deploy.pubxml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="App.config" />
     <None Update="wwwroot\**\*">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
@@ -61,6 +65,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
