@@ -4,4 +4,4 @@ I spent most of the time fixing the data so I could get useful things like that 
 If anyone is willing to help with this please let me know. 
 
 the site is in azure at:
-  http://moontreesapi.azurewebsites.net
+  http://moontrees.azurewebsites.net
