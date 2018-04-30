@@ -5,7 +5,7 @@ import { SearchFilter } from "app/viewModels/search-filters";
 
 @Injectable()
 export class TreeService {
-    url: string = `http://moontreesapi.azurewebsites.net/api/trees`;
+    url: string = `https://moontreesapi.azurewebsites.net/api/trees`;
     constructor(private http: Http) { }
 
     getTree(tree: string) {
