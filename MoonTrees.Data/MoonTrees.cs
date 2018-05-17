@@ -10,15 +10,17 @@ using System.Threading.Tasks;
 namespace MoonTrees.Data {
     public class MoonTrees : IMoonTree {
         private static readonly string MoonTreeStorageString = Environment.GetEnvironmentVariable("MoonTreeStorage");
-
+        private static readonly SharedAccessTablePolicy TableAccessPolicy = new SharedAccessTablePolicy();
+        private static readonly string PolicyName = @"webapi";
         CloudTable table;
 
         public MoonTrees() {
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse(MoonTreeStorageString);
 
             CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
-
-            table = tableClient.GetTableReference("Trees");
+            table = tableClient.GetTableReference("trees");
+            var policy = table.GetSharedAccessSignature(TableAccessPolicy, PolicyName);
+                        
             table.CreateIfNotExists();
         }
         public async Task<IEnumerable<TreeEntity>> Search(string filter, string searchValue) {
@@ -31,8 +33,8 @@ namespace MoonTrees.Data {
                             filteredTrees.Add(tree);
                         }
                         break;
-                    case "TypeOfTree":
-                        if (tree.TypeOfTree.IndexOf(searchValue, StringComparison.InvariantCultureIgnoreCase) >= 0) {
+                    case "Species":
+                        if (Enum.GetName(typeof(Species), tree.Species) == searchValue) {
                             filteredTrees.Add(tree);
                         }
                         break;

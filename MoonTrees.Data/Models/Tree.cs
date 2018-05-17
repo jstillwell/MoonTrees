@@ -14,9 +14,8 @@ namespace MoonTrees.Data.Models {
 
         }
         public TreeEntity(string treeType, int generation) {
-            if (true) {
-                this.PartitionKey = FirstGenKey;
-            }
+            this.PartitionKey = FirstGenKey;
+
             this.RowKey = treeType;
         }
         public string BetterLocation { get; set; }
@@ -25,10 +24,10 @@ namespace MoonTrees.Data.Models {
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public string CityAndState { get; set; }
-        public string PlantingDate { get; set; }
+        public DateTime PlantingDate { get; set; }
         public string Location { get; set; }
         public bool IsLiving { get; set; }
-        public string TypeOfTree { get; set; }
+        public Species Species { get; set; }
 
         public static Tree ToObject(TreeEntity entity) {
             var tree = new Tree {
@@ -36,7 +35,7 @@ namespace MoonTrees.Data.Models {
                 PlantingDate = entity.PlantingDate,
                 Location = entity.Location,
                 IsLiving = entity.IsLiving,
-                TypeOfTree = entity.TypeOfTree
+                Species = entity.Species
             };
 
             return tree;
@@ -52,15 +51,15 @@ namespace MoonTrees.Data.Models {
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public string CityAndState { get; set; }
-        public string PlantingDate { get; set; }
+        public DateTime PlantingDate { get; set; }
         public string Location { get; set; }
         public bool IsLiving { get; set; }
-        public string TypeOfTree { get; set; }
+        public Species Species { get; set; }
 
         public static bool IsValid(TreeEntity value) {
             if (string.IsNullOrWhiteSpace(value.Location)) {
                 return false;
-            } else if (string.IsNullOrWhiteSpace(value.PlantingDate)) {
+            } else if (value.PlantingDate != null) {
                 return false;
             }
 

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2043
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoonTrees.Data.Upload", "MoonTrees.Data.Upload\MoonTrees.Data.Upload.csproj", "{5C3BDEDD-4251-46B8-928C-F2824012ADEA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C3BDEDD-4251-46B8-928C-F2824012ADEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C3BDEDD-4251-46B8-928C-F2824012ADEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C3BDEDD-4251-46B8-928C-F2824012ADEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C3BDEDD-4251-46B8-928C-F2824012ADEA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CBB2D705-452C-4305-98D2-E7B36A7D3A16}
+	EndGlobalSection
+EndGlobal
