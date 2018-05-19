@@ -10,10 +10,10 @@ namespace MoonTrees.Data.Models {
         public TreeEntity() {
 
         }
-        public TreeEntity(string treeType, int generation) {
+        public TreeEntity(Species treeType, int generation) {
             this.PartitionKey = FirstGenKey;
 
-            this.RowKey = treeType;
+            this.RowKey = treeType.ToString();
         }
         public string BetterLocation { get; set; }
         public string RealLocation { get; set; }
